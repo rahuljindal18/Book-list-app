@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import { BookContext } from "../contexts/BookContext";
 
 export default function NewBookForm() {
-  const { addBook } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    addBook(title, author);
+    dispatch({ type: "ADD_BOOK", title, author });
     setAuthor("");
     setTitle("");
   };
